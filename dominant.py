@@ -52,11 +52,11 @@ while(1):
     cv2.imshow('frame',frame)
     
     if cv2.waitKey(1) == ord('t'):
-        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        frame = frame.reshape((frame.shape[0] * frame.shape[1],3)) #represent as row*column,channel number
+        mod_frame = cv2.cvtColor(mod_frame, cv2.COLOR_BGR2RGB)
+        mod_frame = mod_frame.reshape((mod_frame.shape[0] * mod_frame.shape[1],3)) #represent as row*column,channel number
         # print(frame.shape)
         clt = KMeans(n_clusters=3) #cluster number
-        clt.fit(frame)
+        clt.fit(mod_frame)
 
         hist = find_histogram(clt)
         bar = plot_colors2(hist, clt.cluster_centers_)
